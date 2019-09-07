@@ -55,6 +55,9 @@ app.put('/person/:Id',(req,res,err)=>{
 
 
 app.delete('/person/:Id',(req,res,err)=>{
+
+
+    
     //console.log("lllllllll");
     let x=req.params.Id;
     let x1=parseInt(x);
