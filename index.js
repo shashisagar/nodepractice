@@ -1,5 +1,10 @@
 const express=require('express');
 const app=express();
+const morgan=require('morgan');
+const Joi=require('joi');
+app.use(morgan());
+
+
 var port = process.env.PORT || 3000;
 
 const bodyParser=require('body-parser');
@@ -35,9 +40,22 @@ app.get('/person',(req,res)=>{
 });
 
 app.post('/person',(req,res)=>{
-   const id=person.length;
-   const firstname=req.body.firstname;
 
+  blogSchema = Joi.object().keys({ 
+        firstname: Joi.string().required 
+   }); 
+  const result = Joi.validate(body, blogShema); 
+  const { value, error } = result; 
+  const valid = error == null; 
+  if (!valid) { 
+    res.status(422).json({ 
+      message: 'Invalid request',
+    }) 
+  } else { 
+    const id=person.length;
+    const firstname=req.body.firstname;
+    res.send(firstname);
+  } 
 })
 
 app.put('/person/:Id',(req,res,err)=>{
@@ -45,12 +63,18 @@ app.put('/person/:Id',(req,res,err)=>{
     let x=req.params.Id;
     let x1=parseInt(x);
     const obj = person.find(o => o.age === x1);
-    if(err){
-        res.send("Person not exists with this id");
+    if(!obj){
+        return res.status(404).send('The person with given id, does not exists')
     }
-    else{
-        res.send(obj);
-    }
+    person.firstName=req.body.name;
+    res.send(person);
+    
+    // if(err){
+    //     res.send("Person not exists with this id");
+    // }
+    // else{
+    //     res.send(obj);
+    // }
 })
 
 
@@ -72,5 +96,7 @@ app.delete('/person/:Id',(req,res,err)=>{
     }
    
 })
+
+
 
 app.listen(port,()=>console.log('Example app listening on port' +port));

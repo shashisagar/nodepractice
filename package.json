@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +12,12 @@
     "add-gitignore": "^1.1.1",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "mongoose": "^5.6.13",
+    "morgan": "^1.9.1",
     "nodemon": "^1.19.2"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }
