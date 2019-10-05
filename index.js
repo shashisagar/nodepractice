@@ -24,7 +24,7 @@ const person=[
     firstName:"John3", lastName:"Doe3", age:50
      },
      {
-    firstName:"John4", lastName:"Doe4", age:70
+    firstName:"John_child", lastName:"Doe4", age:70
      }
 ]
 
