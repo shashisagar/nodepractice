@@ -35,7 +35,7 @@ app.get('/person',(req,res)=>{
     //console.log("kkkkkkkkk");
     //console.log(req.query.firstname); 
      //console.log(req.body.id); 
-     //console.log(person.length)
+     console.log(person.length)
      res.send(person);
 });
 
