@@ -48,7 +48,7 @@ app.post('/person',(req,res)=>{
   const { value, error } = result; 
   const valid = error == null; 
   if (!valid) { 
-    res.status(422).json({ 
+    res.status(420).json({
       message: 'Invalid request',
     }) 
   } else { 
